@@ -1,0 +1,15 @@
+---
+repo_apt_key: ''
+remove_other_repo: 'false'
+remove_repos:
+  - /etc/apt/sources.list
+
+sources_filename: 'myrepos'
+
+myURL: "http://internal.mirror.mydomain.intra"
+list_repos:
+  - 'deb [arch=amd64] {{ myURL }}/debian {{ ansible_distribution_release }} main contrib non-free'
+  - 'deb [arch=amd64] {{ myURL }}/debian {{ ansible_distribution_release }}-updates main contrib non-free'
+  - 'deb [arch=amd64] {{ myURL }}/debian {{ ansible_distribution_release }}-backports main contrib non-free'
+  - 'deb [arch=amd64] {{ myURL }}/security {{ ansible_distribution_release }}/updates main contrib non-free'
+  - 'deb [arch=amd64] {{ myURL }}/docker {{ ansible_distribution_release }} stable'

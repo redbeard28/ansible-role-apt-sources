@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  author: Jeremie CUADRADO
+  role_name: apt-sources
+  description: Ansible role install New APT repos
+  license: GPLv3
+  company: redbeard-consulting
+  min_ansible_version: 2.9
+
+  platforms:
+    - name: Debian
+      versions:
+        - stretch
+        - buster
+
+  galaxy_tags:
+    - repository
+
+  dependencies:
+    - src: redbeard28.bootstrap
+    - src: redbeard28.basetools
+    - src: redbeard28.diagtools
+    - src: redbeard28.bashaliases
