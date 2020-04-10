@@ -16,7 +16,7 @@ ansible-galaxy install -r requirements.yml
 Inside requirements.yml
 ````yaml
 
-- src: redbeard28.apt-sources
+- src: redbeard28.apt_sources
 ````
 
 More info => [Ansible Docs](https://docs.ansible.com/ansible-container/roles/access.html)
@@ -56,7 +56,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: all
       roles:
-         - { role: redbeard28.apt-sources, tags: repo }
+         - { role: redbeard28.apt_sources, tags: repo }
 
 
 Molecule testing framework
