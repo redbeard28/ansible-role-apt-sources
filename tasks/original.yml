@@ -1,0 +1,7 @@
+---
+- name: "{{ myansible_prefix_task_name }}Install originals repo"
+  template:
+    src: debian.list.j2
+    dest: /etc/apt/sources.list.d/debian.list
+    owner: root
+    group: root

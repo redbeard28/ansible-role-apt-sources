@@ -1,27 +1,8 @@
 ---
-- block:
-  - name: "{{ myansible_prefix_task_name }}Install gpg key"
-    become: true
-    apt_key:
-      url: '{{ repo_apt_key }}'
-      state: present
-    when: repo_apt_key | length > 0
+- name: "{{ myansible_prefix_task_name }}Install personnal repos"
+  include_tasks: personnal.yml
+  when: repo_origin == 'false'
 
-  - name: "{{ myansible_prefix_task_name }}Remove debian repo"
-    file:
-      path: "{{ item }}"
-      state: absent
-    with_items:
-      - "{{ remove_repos }}"
-    when: remove_other_repo == 'true' and remove_repos | length > 0
-
-  - name: "{{ myansible_prefix_task_name }}Install {{ ansible_distribution_release }} repos"
-    become: true
-    apt_repository:
-      repo: '{{ item }}'
-      state: present
-      filename: '{{ sources_filename }}'
-    notify: Update APT cache
-    with_items:
-      - "{{ list_repos }}"
-  when: ansible_distribution  == 'Debian'
+- name: "{{ myansible_prefix_task_name }}Install originals repos"
+  include_tasks: original.yml
+  when: repo_origin == 'true'
